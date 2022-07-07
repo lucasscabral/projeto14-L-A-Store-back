@@ -6,7 +6,7 @@ export const cadastroSchema = joi.object({
   senha: joi.string().required(),
 });
 
-/* export const loginSchema = joi.object({
+export const loginSchema = joi.object({
   email: joi.string().email().required(),
-  password: joi.string().required(),
-}); */
+  senha: joi.string().required(),
+});
