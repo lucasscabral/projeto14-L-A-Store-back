@@ -1,4 +1,4 @@
-import { cadastroSchema, loginSchema } from "../schemas/authSchema.js";
+import { cadastroSchema } from "../schemas/authSchema.js";
 import { db } from "../database/db.js";
 
 export async function validaCadastro(req, res, next) {
