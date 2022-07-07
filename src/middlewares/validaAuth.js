@@ -1,4 +1,4 @@
-import { cadastroSchema } from "../schemas/authSchema.js";
+import { cadastroSchema, loginSchema } from "../schemas/authSchema.js";
 import { db } from "../database/db.js";
 
 export async function validaCadastro(req, res, next) {
@@ -24,7 +24,7 @@ export async function validaCadastro(req, res, next) {
   next();
 }
 
-/* export async function validateSignInSchema(req, res, next) {
+export async function validaLogin(req, res, next) {
   const user = req.body;
 
   const { error } = loginSchema.validate(user, {
@@ -36,4 +36,4 @@ export async function validaCadastro(req, res, next) {
     return res.status(422).send(messageError);
   }
   next();
-} */
+}

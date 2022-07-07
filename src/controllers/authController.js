@@ -21,3 +21,22 @@ export async function cadastrar(req, res) {
     res.sendStatus(500);
   }
 }
+
+export async function login(req, res) {
+  try {
+    const { email, senha } = req.body;
+
+    const user = await db.collection("usuarios").findOne({ email });
+
+    if (user && bcrypt.compareSync(senha, user.senha)) {
+      const nome = user.nome;
+      const id = user._id;
+      res.status(200).send({ nome, id });
+    } else {
+      res.status(401).send("Email ou senha incorretos!");
+    }
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+}
