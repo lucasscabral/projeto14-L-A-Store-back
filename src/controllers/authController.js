@@ -1,5 +1,6 @@
 import { db } from "../database/db.js";
 import bcrypt from "bcrypt";
+import { v4 as uuid } from "uuid";
 
 export async function cadastrar(req, res) {
   try {
@@ -29,9 +30,15 @@ export async function login(req, res) {
     const user = await db.collection("usuarios").findOne({ email });
 
     if (user && bcrypt.compareSync(senha, user.senha)) {
+      const token = uuid();
       const nome = user.nome;
-      const id = user._id;
-      res.status(200).send({ nome, id });
+
+      await db.collection("sessoes").insertOne({
+        userId: user._id,
+        token,
+      });
+
+      res.status(200).send({ token, nome });
     } else {
       res.status(401).send("Email ou senha incorretos!");
     }
