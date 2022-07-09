@@ -1,10 +1,10 @@
-import { Router } from "express";
-import { cadastrar, login } from "../controllers/authController.js";
-import { validaCadastro, validaLogin } from "../middlewares/validaAuth.js";
+import { Router } from 'express'
+import { cadastrar, login } from '../controllers/authController.js'
+import { validaCadastro, validaLogin } from '../middlewares/validaAuth.js'
 
-const router = Router();
+const router = Router()
 
-router.post("/cadastro", validaCadastro, cadastrar);
-router.post("/login", validaLogin, login);
+router.post('/cadastro', validaCadastro, cadastrar)
+router.post('/login', validaLogin, login)
 
-export default router;
+export default router
