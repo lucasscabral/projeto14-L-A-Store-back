@@ -6,8 +6,6 @@ export async function cadastrar(req, res) {
   try {
     const user = req.body
 
-    console.log(user)
-
     // Caso tudo esteja validado vamos criptografar os dados antes
     // de entrar no banco de dados.
     const senhaCriptografada = bcrypt.hashSync(user.senha, 10)
